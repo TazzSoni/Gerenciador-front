@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row, Container } from 'react-bootstrap'
-import CardsTop from '../components/CardsTop'
+import CardsTop from '../components/CardsTop/CardsTop'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import CardsMid from '../components/CardsMid';
+import CardsMid from '../components/CardsMid/CardsMid';
 
 
 function Home() {

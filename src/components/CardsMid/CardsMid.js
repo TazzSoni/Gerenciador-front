@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {
     PieChart, Pie, Cell, Label
 } from 'recharts';
-import '../App.css'
+import './CardsMid.css'
 
 
 function CardsMid() {
