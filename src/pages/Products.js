@@ -1,10 +1,15 @@
 import React from 'react';
+import Navbar from '../components/NavBar/Navbar'
+
 
 function Products() {
   return (
-    <div className='products'>
-      <h1>Products</h1>
-    </div>
+    <>
+      <Navbar />
+      <div className='products'>
+        <h1>Products</h1>
+      </div>
+    </>
   );
 }
 

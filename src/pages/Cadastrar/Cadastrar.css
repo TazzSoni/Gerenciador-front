@@ -1,0 +1,25 @@
+.mainCadastrar{
+    
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00C1AF;
+}
+
+.cardCadastrar{
+    border-radius: 50px;
+    width: 30rem;
+    margin-bottom: 3px;
+
+}
+
+.btCadastrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img{
+border-radius: 50px;
+}
