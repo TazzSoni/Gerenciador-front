@@ -33,7 +33,7 @@ function CardsTop() {
                 </Card.Body>
             </Card>
             <Card bg='info' text='white' className="card">
-                <Card.Header>Cartão de Crádito
+                <Card.Header>Cartão de Crédito
                     <AiFillCreditCard size={50} id="iconCardC"></AiFillCreditCard>
                 </Card.Header>
                 <Card.Body>
