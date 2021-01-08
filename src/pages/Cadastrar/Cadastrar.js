@@ -9,10 +9,10 @@ function Cadastrar() {
     const [password, setPassword] = useState(null)
     const history = useHistory()
 
-    const routeHome = () => {
-        console.log(login, password)
-        history.push('/home')
-    }
+    //    const routeHome = () => {
+    //      console.log(login, password)
+    //        history.push('/home')
+    //    }
 
     const routeCadastrar = () => {
         history.push('/cadastrar')
