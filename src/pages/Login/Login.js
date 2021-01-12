@@ -3,21 +3,34 @@ import { Form, Button, Card } from 'react-bootstrap'
 import BgLogin from '../../images/BgLogin.jpg'
 import { useHistory } from 'react-router-dom'
 import './Login.css'
+import Auth from '../../Services/Auth'
 
 
 function Login() {
-    const [login, setLogin] = useState(null)
-    const [password, setPassword] = useState(null)
+    const [username, setLogin] = useState("")
+    const [password, setPassword] = useState("")
     const history = useHistory()
 
+    async function onEnterButtonClick() {
+        const response = await Auth.login({ username, password })
+        console.log(response)
+        if (response != null) {
+            history.push('/home')
+        } else {
+            alert("faiou")
+            //redirect("/login")
+        }
+    }
+
     const routeHome = () => {
-        console.log(login, password)
+        console.log(username, password)
         history.push('/home')
     }
 
     const routeCadastrar = () => {
         history.push('/cadastrar')
     }
+
 
     return (
         <div className="mainLogin">
@@ -29,7 +42,7 @@ function Login() {
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Login</Form.Label>
                                 <Form.Control onChange={event => setLogin(event.target.value)}
-                                    type="text" placeholder="Informe o login..." name="name" value={login} />
+                                    type="text" placeholder="Informe o login..." name="name" value={username} />
                             </Form.Group>
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label >Senha</Form.Label>
@@ -39,7 +52,7 @@ function Login() {
                             <Button className="btCadastrar" variant="link" type="link" onClick={routeCadastrar}>
                                 Cadastrar
   </Button>
-                            <Button className="btGo" type="submit" border="light">
+                            <Button className="btGo" border="light" onClick={onEnterButtonClick}>
                                 Go!!
   </Button>
                         </Form>
