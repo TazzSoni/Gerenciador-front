@@ -13,15 +13,25 @@ const axios = create({
 });
 
 async function login(credentials) {
-    const response = await axios.post(
-        `${remoteServerAddress}/login`,
-        credentials
-    ).catch(er => {
-        console.log(er)
-    });
-    return response;
+    try {
+        const response = await axios.post(
+            `${remoteServerAddress}/login`,
+            credentials
+        ).catch(er => {
+            console.log(er)
+        });
+        return response;
+    } catch (error) {
+        return false
+    }
 };
 
+function isAutenhenticated() {
+    return true
+}
+
 export default {
-    login
+    login,
+    create,
+    isAutenhenticated
 };
