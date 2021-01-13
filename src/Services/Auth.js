@@ -1,5 +1,7 @@
 const { create } = require("axios").default;
 const remoteServerAddress = "http://localhost:8080";
+const validation = false;
+
 
 const axios = create({
     headers: {
@@ -20,15 +22,16 @@ async function login(credentials) {
         ).catch(er => {
             console.log(er)
         });
+        localStorage.setItem('app-token', response.data)
         return response;
     } catch (error) {
         return false
     }
 };
 
-function isAutenhenticated() {
-    return true
-}
+
+
+const isAutenhenticated = () => localStorage.getItem('app-token') !== null;
 
 export default {
     login,

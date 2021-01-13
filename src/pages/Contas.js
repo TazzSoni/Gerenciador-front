@@ -1,15 +1,15 @@
 import React from 'react';
 import Navbar from '../components/NavBar/Navbar'
 
-function Reports() {
+function Contas() {
   return (
     <>
       <Navbar />
       <div className='products'>
-        <h1>Reports</h1>
+        <h1>Contas</h1>
       </div>
     </>
   );
 }
 
-export default Reports;
+export default Contas;

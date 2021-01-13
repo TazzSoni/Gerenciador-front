@@ -11,6 +11,7 @@ function Navbar() {
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  const logout = () => localStorage.removeItem('app-token')
 
   return (
     <>
@@ -18,6 +19,9 @@ function Navbar() {
         <div className='navbar'>
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+          <Link to='#'>
+            <FaIcons.FaBars onClick={logout} />
           </Link>
         </div>
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -39,6 +43,7 @@ function Navbar() {
             })}
           </ul>
         </nav>
+
       </IconContext.Provider>
     </>
   );
