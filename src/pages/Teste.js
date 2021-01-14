@@ -5,7 +5,7 @@ function Teste() {
     return (
         <>
             <Navbar />
-            <div className='products'>
+            <div className='teste'>
                 <h1>Teste</h1>
             </div>
         </>

@@ -1,0 +1,18 @@
+.cont{
+    margin-top: 5%;
+
+}
+.titulo{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#col1, #col2, #col3{
+    float:right;
+}
+#label{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font: bold;
+    font-size: 30px;
+    color: #17A5B8;
+}

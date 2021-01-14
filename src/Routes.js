@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
-import Contas from './pages/Contas';
+import Contas from './pages/Contas/Contas';
 import Teste from './pages/Teste';
 import Receitas from './pages/Receitas/Receitas';
 import Login from './pages/Login/Login';

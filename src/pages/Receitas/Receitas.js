@@ -5,7 +5,7 @@ function Receitas() {
     return (
         <>
             <Navbar />
-            <div className='products'>
+            <div className='receitas'>
                 <h1>Receitas</h1>
             </div>
         </>
