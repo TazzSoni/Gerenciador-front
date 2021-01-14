@@ -1,9 +1,26 @@
 import React from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
+import Tabela from '../../components/Tabela/Tabela'
+import Auth from '../../Services/Auth'
 import "./Contas.css"
 
+function renderContas(contas) {
+  return contas.map(contas => <Tabela key={contas.id} atividade={contas} />)
+}
+
 function Contas() {
+  let usuario = null
+  async function get() {
+    usuario = await Auth.get("/pessoa")
+    console.log(usuario.data[1].contas)
+
+  }
+
+  get()
+
+
+
   return (
     <>
       <Navbar />
@@ -13,9 +30,9 @@ function Contas() {
             <label id="label">Contas</label>
           </Col>
           <Col >
-            <Button variant="outline-info" id="col3">Excluir</Button>
-            <Button variant="outline-info" id="col2">Editar</Button>
-            <Button variant="success" id="col1">Adicionar</Button>
+            <Button variant="outline-info" id="bt3">Excluir</Button>
+            <Button variant="outline-info" id="bt2">Editar</Button>
+            <Button variant="success" id="bt1">Adicionar</Button>
           </Col>
         </Row>
         <Row>
@@ -29,25 +46,10 @@ function Contas() {
                   <th>Valor</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td colSpan="2">Larry the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
+              <Tabela>
+                {//renderContas(usuario.data[1].contas)
+                }
+              </Tabela>
             </Table>
           </Col>
         </Row>

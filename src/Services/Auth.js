@@ -1,6 +1,6 @@
 const { create } = require("axios").default;
-const remoteServerAddress = "http://localhost:8080";
-const validation = false;
+const remoteServerAddressLogin = "http://localhost:8080/login";
+const remoteServerAddress = "http://localhost:8080/api";
 
 
 const axios = create({
@@ -17,7 +17,7 @@ const axios = create({
 async function login(credentials) {
     try {
         const response = await axios.post(
-            `${remoteServerAddress}/login`,
+            `${remoteServerAddressLogin}`,
             credentials
         ).catch(er => {
             console.log(er)
@@ -29,12 +29,27 @@ async function login(credentials) {
     }
 };
 
+async function get(endpoint) {
+    try {
+        const token = localStorage.getItem('app-token')
+        const response = await axios.get(`${remoteServerAddress}${endpoint}`, { headers: { "Authorization": `${token}` } });
+        return response;
+    } catch (error) {
+        return false;
+    }
+}
 
 
-const isAutenhenticated = () => localStorage.getItem('app-token') !== null;
+
+const isAutenhenticated = () => {
+    // return true;
+    return localStorage.getItem('app-token') !== null
+};
 
 export default {
     login,
     create,
-    isAutenhenticated
+    isAutenhenticated,
+    get
+
 };

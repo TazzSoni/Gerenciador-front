@@ -13,7 +13,6 @@ function Login() {
 
     async function onEnterButtonClick() {
         const response = await Auth.login({ username, password })
-        console.log(localStorage.getItem('app-token'))
         if (response != null) {
             history.push('/home')
         } else {
