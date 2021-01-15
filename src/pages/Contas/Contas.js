@@ -5,22 +5,15 @@ import Tabela from '../../components/Tabela/Tabela'
 import Auth from '../../Services/Auth'
 import "./Contas.css"
 
-function renderContas(contas) {
-  return contas.map(contas => <Tabela key={contas.id} atividade={contas} />)
+async function renderContas() {
+  var usuario = await Auth.get("/conta/rod")
+  usuario = usuario.data
+  const teste = usuario.map(conta => <Tabela key={conta.id} contas={conta} />)
+  console.log(teste)
+  return usuario.map(conta => <Tabela key={conta.id} contas={conta} />)
 }
 
 function Contas() {
-  let usuario = null
-  async function get() {
-    usuario = await Auth.get("/pessoa")
-    console.log(usuario.data[1].contas)
-
-  }
-
-  get()
-
-
-
   return (
     <>
       <Navbar />
@@ -46,10 +39,9 @@ function Contas() {
                   <th>Valor</th>
                 </tr>
               </thead>
-              <Tabela>
-                {//renderContas(usuario.data[1].contas)
-                }
-              </Tabela>
+              <tbody>
+                {renderContas()}
+              </tbody>
             </Table>
           </Col>
         </Row>

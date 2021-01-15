@@ -22,7 +22,6 @@ function Login() {
     }
 
     const routeHome = () => {
-        console.log(username, password)
         history.push('/home')
     }
 
