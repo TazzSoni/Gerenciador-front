@@ -4,7 +4,7 @@ import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import Tabela from '../../components/Tabela/Tabela'
 import DataProvider from '../../Services/DataProvider'
 import "./Contas.css"
-import CrudContas from '../../components/CrudContas/CrudContas';
+import CrudContas from '../../components/Modal/CrudContas';
 import { GiPayMoney } from "react-icons/gi";
 
 
