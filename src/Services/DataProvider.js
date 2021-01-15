@@ -21,10 +21,8 @@ async function login(credentials) {
     ).catch(er => {
         if (er.response.status === 401) {
             const newResponse = { status: 401, message: "Login inválido" }
-            console.log(newResponse)
             return newResponse
         }
-        console.log(er.response.status)
     });
     localStorage.setItem('app-token', response.data)
     return response;

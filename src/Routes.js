@@ -6,13 +6,13 @@ import Teste from './pages/Teste';
 import Receitas from './pages/Receitas/Receitas';
 import Login from './pages/Login/Login';
 import Cadastrar from './pages/Cadastrar/Cadastrar';
-import Auth from './Services/Auth'
+import DataProvider from './Services/DataProvider'
 
 function Routes() {
 
     const PrivateRoute = ({ component: Component, ...rest }) => (
         <Route {...rest} render={props => (
-            Auth.isAutenhenticated() ? (
+            DataProvider.isAutenhenticated() ? (
                 <Component {...props} />
             ) : (
                     <Redirect to={{ pathname: "/", state: { from: props.location } }} />

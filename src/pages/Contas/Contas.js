@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import Tabela from '../../components/Tabela/Tabela'
-import Auth from '../../Services/Auth'
+import DataProvider from '../../Services/DataProvider'
 import "./Contas.css"
+import CrudContas from '../../components/CrudContas/CrudContas';
+import { GiPayMoney } from "react-icons/gi";
+
 
 
 
@@ -12,7 +15,8 @@ function Contas() {
 
   useEffect(() => {
     async function getContas() {
-      const newContas = await Auth.get("/conta/rod")
+      const pageAdress = "/conta/" + localStorage.getItem('login')
+      const newContas = await DataProvider.get(pageAdress)
       setContas(newContas.data);
     }
     getContas();
@@ -32,11 +36,14 @@ function Contas() {
         <Row>
           <Col className="titulo">
             <label id="label">Contas</label>
+            <GiPayMoney size={50} className="iconCard"></GiPayMoney>
           </Col>
+          <Col ></Col>
+          <Col ></Col>
           <Col >
             <Button variant="outline-info" id="bt3">Excluir</Button>
             <Button variant="outline-info" id="bt2">Editar</Button>
-            <Button variant="success" id="bt1">Adicionar</Button>
+            <CrudContas></CrudContas>
           </Col>
         </Row>
         <Row>

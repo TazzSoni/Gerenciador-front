@@ -3,7 +3,7 @@ import { Form, Button, Card } from 'react-bootstrap'
 import BgLogin from '../../images/BgLogin.jpg'
 import { useHistory } from 'react-router-dom'
 import './Login.css'
-import Auth from '../../Services/Auth'
+import DataProvider from '../../Services/DataProvider'
 
 
 function Login() {
@@ -12,9 +12,9 @@ function Login() {
     const history = useHistory()
 
     async function onEnterButtonClick() {
-        const response = await Auth.login({ username, password })
-        console.log(response.status)
+        const response = await DataProvider.login({ username, password })
         if (response.status === 200) {
+            localStorage.setItem('login', username)
             history.push('/home')
         } else {
             alert(response.message)

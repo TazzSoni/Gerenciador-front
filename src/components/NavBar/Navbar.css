@@ -1,3 +1,5 @@
+
+
 .navbar {
   background-color: #17A5B8;
   height: 80px;
@@ -5,7 +7,9 @@
   justify-content: flex-start;
   align-items: center;
 }
-
+.headerApp{
+  font-family: 'Lato', sans-serif;
+}
 .menu-bars {
   margin-left: 2rem;
   font-size: 2rem;
