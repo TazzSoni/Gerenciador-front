@@ -5,7 +5,7 @@ import { AiFillCreditCard } from "react-icons/ai";
 import './CardsTop.css'
 
 
-function CardsTop() {
+function CardsTop({ usuario }) {
     return (
         <>
             <Card bg='info' text='white' className="card">
@@ -13,7 +13,7 @@ function CardsTop() {
                     <GiTakeMyMoney size={50} className="iconCard"></GiTakeMyMoney>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title id="cardValor">R$ 1500,00</Card.Title>
+                    <Card.Title id="cardValor">R$ {usuario.carteira}</Card.Title>
                 </Card.Body>
             </Card>
             <Card bg='info' text='white' className="card">

@@ -3,10 +3,10 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
-import './Navbar.css';
+import './Navbar.scss';
 import { IconContext } from 'react-icons';
 
-function Navbar() {
+function Navbar({ nome }) {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -20,7 +20,7 @@ function Navbar() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-          <h3 className="headerApp">TESTE</h3>
+          <h3 className="headerApp">Olá {nome}, este é seu gerenciador finaceiro</h3>
           <Link to='#' className='menu-bars'>
             <FaIcons.FaSignInAlt onClick={logout} />
           </Link>

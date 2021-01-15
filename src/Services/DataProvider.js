@@ -25,6 +25,7 @@ async function login(credentials) {
         }
     });
     localStorage.setItem('app-token', response.data)
+    console.log(response)
     return response;
 };
 
