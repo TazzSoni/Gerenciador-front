@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import Tabela from '../../components/Tabela/Tabela'
 import Auth from '../../Services/Auth'
 import "./Contas.css"
 
-async function renderContas() {
-  var usuario = await Auth.get("/conta/rod")
-  usuario = usuario.data
-  const teste = usuario.map(conta => <Tabela key={conta.id} contas={conta} />)
-  console.log(teste)
-  return usuario.map(conta => <Tabela key={conta.id} contas={conta} />)
-}
+
 
 function Contas() {
+  const [contas, setContas] = useState(null);
+
+  useEffect(() => {
+    async function getContas() {
+      const newContas = await Auth.get("/conta/rod")
+      setContas(newContas.data);
+    }
+    getContas();
+  }, []);
+
+  function renderContas() {
+    if (!contas) {
+      return null
+    }
+    return contas.map(conta => <Tabela key={conta.id} conta={conta} />)
+  }
+
   return (
     <>
       <Navbar />

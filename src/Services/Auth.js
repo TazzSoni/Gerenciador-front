@@ -15,18 +15,19 @@ const axios = create({
 });
 
 async function login(credentials) {
-    try {
-        const response = await axios.post(
-            `${remoteServerAddressLogin}`,
-            credentials
-        ).catch(er => {
-            console.log(er)
-        });
-        localStorage.setItem('app-token', response.data)
-        return response;
-    } catch (error) {
-        return false
-    }
+    const response = await axios.post(
+        `${remoteServerAddressLogin}`,
+        credentials
+    ).catch(er => {
+        if (er.response.status === 401) {
+            const newResponse = { status: 401, message: "Login inválido" }
+            console.log(newResponse)
+            return newResponse
+        }
+        console.log(er.response.status)
+    });
+    localStorage.setItem('app-token', response.data)
+    return response;
 };
 
 async function get(endpoint) {
@@ -46,10 +47,12 @@ const isAutenhenticated = () => {
     return localStorage.getItem('app-token') !== null
 };
 
-export default {
+const saida = {
     login,
     create,
     isAutenhenticated,
     get
 
-};
+}
+
+export default saida;

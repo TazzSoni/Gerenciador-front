@@ -2,14 +2,14 @@ import React from 'react';
 import './Tabela.css'
 import { Form } from 'react-bootstrap';
 
-function Tabela(contas) {
+function Tabela({ conta }) {
 
     return (
         <tr>
             <td><Form.Check type="checkbox" /></td>
-            <td>{contas.descricao}</td>
+            <td>{console.log(conta), conta.descricao}</td>
             <td>teste</td>
-            <td>{contas.valor}</td>
+            <td>{conta.valor}</td>
         </tr>
     )
 }

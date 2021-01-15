@@ -13,10 +13,11 @@ function Login() {
 
     async function onEnterButtonClick() {
         const response = await Auth.login({ username, password })
-        if (response != null) {
+        console.log(response.status)
+        if (response.status === 200) {
             history.push('/home')
         } else {
-            alert("faiou")
+            alert(response.message)
             //redirect("/login")
         }
     }
