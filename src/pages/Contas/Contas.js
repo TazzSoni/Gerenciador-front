@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
-import Tabela from '../../components/Tabela/Tabela'
 import DataProvider from '../../Services/DataProvider'
 import "./Contas.css"
 import CrudContas from '../../components/Modal/CrudContas';
 import { GiPayMoney } from "react-icons/gi";
-
-
-
 
 function Contas() {
   const [contas, setContas] = useState(null);
@@ -17,21 +13,56 @@ function Contas() {
     async function getContas() {
       const pageAdress = "/conta/" + localStorage.getItem('login')
       const newContas = await DataProvider.get(pageAdress)
-      setContas(newContas.data);
+      setContas(newContas.data.map((d) => {
+        return { select: false, id: d.id, valor: d.valor, descricao: d.descricao }
+      }));
     }
     getContas();
   }, []);
+
+  function callDeleteConta() {
+    contas.forEach(deleteConta);
+  }
+
+  function deleteConta(item) {
+    if (item.select) {
+      //implementar aqui a chamada no axios para exclusão
+      console.log("deletado ", item)
+    }
+  }
+
+
 
   function renderContas() {
     if (!contas) {
       return null
     }
-    return contas.map(conta => <Tabela key={conta.id} conta={conta} />)
+    return contas.map(conta =>
+      <tr key={conta.id}>
+        <td ><input
+          onChange={event => {
+            let checked = event.target.checked;
+            setContas(
+              contas.map(data => {
+                if (conta.id === data.id) {
+                  data.select = checked;
+                }
+                return data;
+              })
+            );
+          }}
+          type="checkbox"
+          checked={conta.select} /></td>
+        <td>{conta.descricao}</td>
+        <td>teste</td>
+        <td>{conta.valor}</td>
+      </tr>
+    )
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar nome={localStorage.getItem('user-name')} />
       <Container fluid="sm" className="cont">
         <Row>
           <Col className="titulo">
@@ -41,7 +72,7 @@ function Contas() {
           <Col ></Col>
           <Col ></Col>
           <Col >
-            <Button variant="outline-info" id="bt3">Excluir</Button>
+            <Button variant="outline-info" id="bt3" onClick={callDeleteConta}>Excluir</Button>
             <Button variant="outline-info" id="bt2">Editar</Button>
             <CrudContas></CrudContas>
           </Col>
@@ -59,6 +90,7 @@ function Contas() {
               </thead>
               <tbody>
                 {renderContas()}
+
               </tbody>
             </Table>
           </Col>

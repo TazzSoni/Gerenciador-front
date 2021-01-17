@@ -13,7 +13,7 @@ function CardsTop({ usuario }) {
                     <GiTakeMyMoney size={50} className="iconCard"></GiTakeMyMoney>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title id="cardValor">R$ {usuario.carteira}</Card.Title>
+                    <Card.Title id="cardValor">R$ {console.log(usuario), usuario.carteira}</Card.Title>
                 </Card.Body>
             </Card>
             <Card bg='info' text='white' className="card">
@@ -21,7 +21,7 @@ function CardsTop({ usuario }) {
                     <GiReceiveMoney size={50} className="iconCard"></GiReceiveMoney>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title id="cardValor">R$ 1500,00</Card.Title>
+                    <Card.Title id="cardValor">R$ {usuario.receita}</Card.Title>
                 </Card.Body>
             </Card>
             <Card bg='info' text='white' className="card">
@@ -29,7 +29,7 @@ function CardsTop({ usuario }) {
                     <GiPayMoney size={50} className="iconCard"></GiPayMoney>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title id="cardValor">R$ 1500,00</Card.Title>
+                    <Card.Title id="cardValor">R$ {usuario.despesas}</Card.Title>
                 </Card.Body>
             </Card>
             <Card bg='info' text='white' className="card">

@@ -13,7 +13,7 @@ function Home() {
     async function getUsuario() {
       const pageAdress = "/pessoa/" + localStorage.getItem('login')
       const newUsuario = await DataProvider.get(pageAdress)
-      console.log(newUsuario.data)
+      localStorage.setItem('user-name', newUsuario.data.nome)
       setUsuario(newUsuario.data);
     }
     getUsuario();
