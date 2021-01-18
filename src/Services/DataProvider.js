@@ -40,15 +40,19 @@ async function get(endpoint) {
 }
 
 async function excluir(endpoint) {
-    try {
-        const token = localStorage.getItem('app-token')
-        const response = await axios.delete(`${remoteServerAddress}${endpoint}`, { headers: { "Authorization": `${token}` } });
-        return response;
-    } catch (error) {
-        return false;
-    }
-}
+    const token = localStorage.getItem('app-token')
+    console.log(endpoint)
+    const response = await axios
+        .delete(`${remoteServerAddress}${endpoint}`,
+            { headers: { "Authorization": `${token}` } })
+        .catch(er => {
+            const newResponse = { status: er.response.status, message: "bad request" }
+            return newResponse
 
+        });
+    console.log(response)
+    return response;
+}
 
 
 const isAutenhenticated = () => {

@@ -13,7 +13,7 @@ function CardsTop({ usuario }) {
                     <GiTakeMyMoney size={50} className="iconCard"></GiTakeMyMoney>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title id="cardValor">R$ {console.log(usuario), usuario.carteira}</Card.Title>
+                    <Card.Title id="cardValor">R$ {usuario.carteira}</Card.Title>
                 </Card.Body>
             </Card>
             <Card bg='info' text='white' className="card">

@@ -8,26 +8,38 @@ import { GiPayMoney } from "react-icons/gi";
 
 function Contas() {
   const [contas, setContas] = useState(null);
+  const [contaExcluida, setContaExcluida] = useState(null)
+  const pageAdress = "/conta/" + localStorage.getItem('login');
 
   useEffect(() => {
     async function getContas() {
-      const pageAdress = "/conta/" + localStorage.getItem('login')
       const newContas = await DataProvider.get(pageAdress)
       setContas(newContas.data.map((d) => {
         return { select: false, id: d.id, valor: d.valor, descricao: d.descricao }
       }));
     }
     getContas();
-  }, []);
+  }, [contaExcluida]);
 
   function callDeleteConta() {
     contas.forEach(deleteConta);
   }
 
-  function deleteConta(item) {
+  async function deleteConta(item) {
     if (item.select) {
       //implementar aqui a chamada no axios para exclusão
-      console.log("deletado ", item)
+      const pageAdressDelete = pageAdress + "/" + item.id
+      console.log(pageAdressDelete)
+      const newContas = await DataProvider.excluir(pageAdressDelete)
+      console.log(newContas)
+      if (newContas.status === 200) {
+        setContaExcluida(item)
+        alert("excluido")
+      } else {
+        alert("Não excluido")
+      }
+
+
     }
   }
 
