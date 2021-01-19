@@ -8,7 +8,7 @@ import { GiPayMoney } from "react-icons/gi";
 
 function Contas() {
   const [contas, setContas] = useState(null);
-  const [contaExcluida, setContaExcluida] = useState(null)
+  const [evento, setEvento] = useState(null)
   const pageAdress = "/conta/" + localStorage.getItem('login');
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function Contas() {
       }));
     }
     getContas();
-  }, [contaExcluida]);
+  }, [evento]);
 
   function callDeleteConta() {
     contas.forEach(deleteConta);
@@ -29,17 +29,13 @@ function Contas() {
     if (item.select) {
       //implementar aqui a chamada no axios para exclusão
       const pageAdressDelete = pageAdress + "/" + item.id
-      console.log(pageAdressDelete)
       const newContas = await DataProvider.excluir(pageAdressDelete)
-      console.log(newContas)
       if (newContas.status === 200) {
-        setContaExcluida(item)
+        setEvento(item)
         alert("excluido")
       } else {
         alert("Não excluido")
       }
-
-
     }
   }
 
@@ -86,7 +82,7 @@ function Contas() {
           <Col >
             <Button variant="outline-info" id="bt3" onClick={callDeleteConta}>Excluir</Button>
             <Button variant="outline-info" id="bt2">Editar</Button>
-            <CrudContas></CrudContas>
+            <CrudContas ></CrudContas>
           </Col>
         </Row>
         <Row>

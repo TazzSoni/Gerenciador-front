@@ -1,24 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Form, Col, Button } from 'react-bootstrap';
 import './CrudContas.css'
+import DataProvider from '../../Services/DataProvider'
+
 
 function MyVerticallyCenteredModal(props) {
+    const [newValor, setNewValor] = useState("")
+    const [newDescricao, setNewDescricao] = useState("")
+
+    async function salvaConta() {
+        const pageAdress = "/conta/" + localStorage.getItem('login')
+        const response = await DataProvider.post(pageAdress, { valor: newValor, descricao: newDescricao })
+        console.log(response)
+        if (response.status === 200) {
+
+            alert("salvo")
+        } else {
+            alert("Não salvo")
+        }
+
+
+    }
+
     return (
         <Modal
             {...props}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
+
         >
             <Modal.Header closeButton>
                 <Modal.Title id="labeHeader">Cadastro de conta</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form>
+                <Form onSubmit={salvaConta}>
                     <Form.Row>
                         <Form.Group as={Col}>
                             <Form.Label id="labe">Descrição</Form.Label>
-                            <Form.Control type="text" placeholder="Descrição da conta" />
+                            <Form.Control type="text" placeholder="Descrição da conta" onChange={(event) => setNewDescricao(event.target.value)} value={newDescricao} />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
@@ -29,22 +49,23 @@ function MyVerticallyCenteredModal(props) {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label id="labe">Valor</Form.Label>
-                                <Form.Control type="text" placeholder="Valor da Conta" />
+                                <Form.Control placeholder="Valor da Conta" type="number" onChange={(ev) => setNewValor(ev.target.value)} value={newValor} />
                             </Form.Group>
                         </Form.Row>
                     </Form.Row>
+                    <hr></hr>
+                    <Button className="btSummit" variant="success" type="summit" onClick={props.onHide} >
+                        Salvar Conta
+            </Button>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="success" onClick={props.onHide} >
-                    Salvar Conta
-            </Button>
             </Modal.Footer>
         </Modal>
     );
 }
 
-function CrudContas() {
+function CrudContas(props) {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
