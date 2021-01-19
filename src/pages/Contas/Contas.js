@@ -5,6 +5,7 @@ import DataProvider from '../../Services/DataProvider'
 import "./Contas.css"
 import CrudContas from '../../components/Modal/CrudContas';
 import { GiPayMoney } from "react-icons/gi";
+import EditContas from '../../components/Modal/EditContas';
 
 function Contas() {
   const [contas, setContas] = useState(null);
@@ -20,6 +21,9 @@ function Contas() {
     }
     getContas();
   }, [evento]);
+
+
+
 
   function callDeleteConta() {
     contas.forEach(deleteConta);
@@ -81,7 +85,7 @@ function Contas() {
           <Col ></Col>
           <Col >
             <Button variant="outline-info" id="bt3" onClick={callDeleteConta}>Excluir</Button>
-            <Button variant="outline-info" id="bt2">Editar</Button>
+            <EditContas conta={contas}></EditContas>
             <CrudContas ></CrudContas>
           </Col>
         </Row>

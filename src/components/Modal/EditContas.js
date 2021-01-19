@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Col, Button } from 'react-bootstrap';
 import './CrudContas.css'
 import DataProvider from '../../Services/DataProvider'
@@ -7,10 +7,34 @@ import DataProvider from '../../Services/DataProvider'
 function MyVerticallyCenteredModal(props) {
     const [newValor, setNewValor] = useState("")
     const [newDescricao, setNewDescricao] = useState("")
+    const [teste, setTeste] = useState(null)
+    const [contaToEdit, setContaToEdit] = useState(null)
+
+    useEffect(() => {
+        function getContas() {
+            setTeste(props.conta.conta)
+        }
+        function editConta(item) {
+            if (item.select) {
+                setContaToEdit(item)
+            }
+        }
+        function callEditConta() {
+            if (teste) {
+                teste.forEach(editConta);
+            }
+        }
+        getContas();
+        callEditConta();
+        console.log(contaToEdit)
+    }, [props.onHide]);
+
+
 
     async function salvaConta() {
         const pageAdress = "/conta/" + localStorage.getItem('login')
-        const response = await DataProvider.post(pageAdress, { valor: newValor, descricao: newDescricao })
+        //Caso não trigger o onchange vai o valor em branco para o banco
+        const response = await DataProvider.put(pageAdress, { id: contaToEdit.id, valor: newValor, descricao: newDescricao })
         console.log(response)
         if (response.status === 200) {
 
@@ -20,6 +44,9 @@ function MyVerticallyCenteredModal(props) {
         }
 
 
+    }
+    if (!contaToEdit) {
+        return null
     }
 
     return (
@@ -38,7 +65,7 @@ function MyVerticallyCenteredModal(props) {
                     <Form.Row>
                         <Form.Group as={Col}>
                             <Form.Label id="labe">Descrição</Form.Label>
-                            <Form.Control type="text" placeholder="Descrição da conta" onChange={(event) => setNewDescricao(event.target.value)} value={newDescricao} />
+                            <Form.Control type="text" placeholder={contaToEdit.descricao} onChange={(event) => setNewDescricao(event.target.value)} value={newDescricao} />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
@@ -49,7 +76,7 @@ function MyVerticallyCenteredModal(props) {
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label id="labe">Valor</Form.Label>
-                                <Form.Control placeholder="Valor da Conta" type="number" onChange={(ev) => setNewValor(ev.target.value)} value={newValor} />
+                                <Form.Control placeholder={contaToEdit.valor} type="number" onChange={(ev) => setNewValor(ev.target.value)} value={newValor} />
                             </Form.Group>
                         </Form.Row>
                     </Form.Row>
@@ -65,19 +92,20 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 
-function CrudContas() {
+function EditContas(props) {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
-            <Button variant="success" id="bt1" onClick={() => setModalShow(true)}>Adicionar</Button>
+            <Button variant="outline-info" id="bt1" onClick={() => setModalShow(true)}>Editar</Button>
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+                conta={props}
             />
 
 
         </>
     );
 }
-export default CrudContas
+export default EditContas

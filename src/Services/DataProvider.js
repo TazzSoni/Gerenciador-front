@@ -54,6 +54,22 @@ async function post(endpoint, data) {
     return response;
 }
 
+async function put(endpoint, data) {
+    const token = localStorage.getItem('app-token')
+    console.log(data)
+    const response = await axios
+        .put(`${remoteServerAddress}${endpoint}`,
+            data,
+            { headers: { "Authorization": `${token}` } })
+        .catch(er => {
+            const newResponse = { status: er.response.status, message: "bad request" }
+            return newResponse
+
+        });
+    console.log(response)
+    return response;
+}
+
 async function excluir(endpoint) {
     const token = localStorage.getItem('app-token')
     console.log(endpoint)
@@ -81,6 +97,7 @@ const saida = {
     isAutenhenticated,
     get,
     post,
+    put,
     excluir
 
 }
