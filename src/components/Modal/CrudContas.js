@@ -7,10 +7,11 @@ import DataProvider from '../../Services/DataProvider'
 function MyVerticallyCenteredModal(props) {
     const [newValor, setNewValor] = useState("")
     const [newDescricao, setNewDescricao] = useState("")
+    const [newData, setNewData] = useState("")
 
     async function salvaConta() {
         const pageAdress = "/conta/" + localStorage.getItem('login')
-        const response = await DataProvider.post(pageAdress, { valor: newValor, descricao: newDescricao })
+        const response = await DataProvider.post(pageAdress, { valor: newValor, descricao: newDescricao, data: newData })
         console.log(response)
         if (response.status === 200) {
 
@@ -44,7 +45,7 @@ function MyVerticallyCenteredModal(props) {
                     <Form.Row>
                         <Form.Group as={Col}>
                             <Form.Label id="labe">Data</Form.Label>
-                            <Form.Control type="date" />
+                            <Form.Control type="date" onChange={(ev) => setNewData(ev.target.value)} value={newData} />
                         </Form.Group>
                         <Form.Row>
                             <Form.Group as={Col}>

@@ -16,7 +16,7 @@ function Contas() {
     async function getContas() {
       const newContas = await DataProvider.get(pageAdress)
       setContas(newContas.data.map((d) => {
-        return { select: false, id: d.id, valor: d.valor, descricao: d.descricao }
+        return { select: false, id: d.id, valor: d.valor, descricao: d.descricao, data: d.data }
       }));
     }
     getContas();
@@ -66,7 +66,7 @@ function Contas() {
           type="checkbox"
           checked={conta.select} /></td>
         <td>{conta.descricao}</td>
-        <td>teste</td>
+        <td>{conta.data.split('T')[0]}</td>
         <td>{conta.valor}</td>
       </tr>
     )

@@ -7,6 +7,7 @@ import DataProvider from '../../Services/DataProvider'
 function MyVerticallyCenteredModal(props) {
     const [newValor, setNewValor] = useState("")
     const [newDescricao, setNewDescricao] = useState("")
+    const [newData, setNewData] = useState("")
     const [teste, setTeste] = useState(null)
     const [contaToEdit, setContaToEdit] = useState(null)
 
@@ -17,6 +18,7 @@ function MyVerticallyCenteredModal(props) {
         function editConta(item) {
             if (item.select) {
                 setContaToEdit(item)
+
             }
         }
         function callEditConta() {
@@ -26,7 +28,6 @@ function MyVerticallyCenteredModal(props) {
         }
         getContas();
         callEditConta();
-        console.log(contaToEdit)
     }, [props.onHide]);
 
 
@@ -34,7 +35,8 @@ function MyVerticallyCenteredModal(props) {
     async function salvaConta() {
         const pageAdress = "/conta/" + localStorage.getItem('login')
         //Caso não trigger o onchange vai o valor em branco para o banco
-        const response = await DataProvider.put(pageAdress, { id: contaToEdit.id, valor: newValor, descricao: newDescricao })
+
+        const response = await DataProvider.put(pageAdress, { id: contaToEdit.id, valor: newValor, descricao: newDescricao, data: newData })
         console.log(response)
         if (response.status === 200) {
 
@@ -71,12 +73,12 @@ function MyVerticallyCenteredModal(props) {
                     <Form.Row>
                         <Form.Group as={Col}>
                             <Form.Label id="labe">Data</Form.Label>
-                            <Form.Control type="date" />
+                            <Form.Control type="date" onChange={(event) => setNewData(event.target.value)} value={newData} />
                         </Form.Group>
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label id="labe">Valor</Form.Label>
-                                <Form.Control placeholder={contaToEdit.valor} type="number" onChange={(ev) => setNewValor(ev.target.value)} value={newValor} />
+                                <Form.Control placeholder={contaToEdit.valor} type="number" onChange={(event) => setNewValor(event.target.value)} value={newValor} />
                             </Form.Group>
                         </Form.Row>
                     </Form.Row>
