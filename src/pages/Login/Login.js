@@ -4,7 +4,6 @@ import BgLogin from '../../images/BgLogin.jpg'
 import { useHistory } from 'react-router-dom'
 import './Login.css'
 import DataProvider from '../../Services/DataProvider'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
