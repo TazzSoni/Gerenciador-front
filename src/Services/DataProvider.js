@@ -40,8 +40,6 @@ async function get(endpoint) {
 }
 
 async function cadastra(data) {
-    const token = localStorage.getItem('app-token')
-    console.log(data)
     const response = await axios
         .post(`${remoteServerAddress}/pessoa`,
             data,

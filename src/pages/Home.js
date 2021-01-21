@@ -13,8 +13,10 @@ function Home() {
     async function getUsuario() {
       const pageAdress = "/pessoa/" + localStorage.getItem('login')
       const newUsuario = await DataProvider.get(pageAdress)
-      localStorage.setItem('user-name', newUsuario.data.nome)
-      setUsuario(newUsuario.data);
+      if (newUsuario) {
+        localStorage.setItem('user-name', newUsuario.data.nome)
+        setUsuario(newUsuario.data);
+      }
     }
     getUsuario();
   }, []);
