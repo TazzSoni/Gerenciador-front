@@ -34,7 +34,7 @@ function Cadastrar() {
     return (
         <div className="mainLogin">
             <div className="divCardLogin">
-                <Card className="cardLogin" bg='#00C1AF'>
+                <Card className="cardCadastrar" bg='#00C1AF'>
                     <Card.Img className="img" variant="top" src={BgLogin} />
                     <Card.Body>
                         <Form>
