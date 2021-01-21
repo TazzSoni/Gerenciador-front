@@ -28,7 +28,7 @@ function MyVerticallyCenteredModal(props) {
         }
         getContas();
         callEditConta();
-    }, [props.onHide]);
+    });
 
 
 

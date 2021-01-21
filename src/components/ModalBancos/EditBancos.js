@@ -27,7 +27,7 @@ function MyVerticallyCenteredModal(props) {
         }
         getBancos();
         callEditBanco();
-    }, [props.onHide]);
+    });
 
 
 
