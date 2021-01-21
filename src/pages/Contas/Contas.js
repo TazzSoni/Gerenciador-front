@@ -3,21 +3,22 @@ import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import DataProvider from '../../Services/DataProvider'
 import "./Contas.css"
-import CrudContas from '../../components/Modal/CrudContas';
+import CrudContas from '../../components/ModalContas/CrudContas';
 import { GiPayMoney } from "react-icons/gi";
-import EditContas from '../../components/Modal/EditContas';
+import EditContas from '../../components/ModalContas/EditContas';
 
 function Contas() {
   const [contas, setContas] = useState(null);
   const [evento, setEvento] = useState(null)
-  const pageAdress = "/conta/" + localStorage.getItem('login');
 
   useEffect(() => {
     async function getContas() {
-      const newContas = await DataProvider.get(pageAdress)
-      setContas(newContas.data.map((d) => {
-        return { select: false, id: d.id, valor: d.valor, descricao: d.descricao, data: d.data }
-      }));
+      const newContas = await DataProvider.get("/conta/" + localStorage.getItem('login'))
+      if (newContas) {
+        setContas(newContas.data.map((d) => {
+          return { select: false, id: d.id, valor: d.valor, descricao: d.descricao, data: d.data }
+        }));
+      }
     }
     getContas();
   }, [evento]);
@@ -32,8 +33,7 @@ function Contas() {
   async function deleteConta(item) {
     if (item.select) {
       //implementar aqui a chamada no axios para exclusão
-      const pageAdressDelete = pageAdress + "/" + item.id
-      const newContas = await DataProvider.excluir(pageAdressDelete)
+      const newContas = await DataProvider.excluir("/conta/" + localStorage.getItem('login') + "/" + item.id)
       if (newContas.status === 200) {
         setEvento(item)
         alert("excluido")

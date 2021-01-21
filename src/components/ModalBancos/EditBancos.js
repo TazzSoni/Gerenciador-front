@@ -1,42 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Form, Col, Button } from 'react-bootstrap';
-import './CrudContas.css'
+import './EditBancos.css'
 import DataProvider from '../../Services/DataProvider'
 
 
 function MyVerticallyCenteredModal(props) {
     const [newValor, setNewValor] = useState("")
-    const [newDescricao, setNewDescricao] = useState("")
-    const [newData, setNewData] = useState("")
+    const [newNome, setNewNome] = useState("")
     const [teste, setTeste] = useState(null)
-    const [contaToEdit, setContaToEdit] = useState(null)
+    const [bancoToEdit, setBancoToEdit] = useState(null)
 
     useEffect(() => {
-        function getContas() {
-            setTeste(props.conta.conta)
+        function getBancos() {
+            setTeste(props.banco.banco)
         }
-        function editConta(item) {
+        function editBanco(item) {
             if (item.select) {
-                setContaToEdit(item)
+                setBancoToEdit(item)
 
             }
         }
-        function callEditConta() {
+        function callEditBanco() {
             if (teste) {
-                teste.forEach(editConta);
+                teste.forEach(editBanco);
             }
         }
-        getContas();
-        callEditConta();
+        getBancos();
+        callEditBanco();
     }, [props.onHide]);
 
 
 
-    async function salvaConta() {
-        const pageAdress = "/conta/" + localStorage.getItem('login')
+    async function salvaBanco() {
+        const pageAdress = "/banco/" + localStorage.getItem('login')
         //Caso não trigger o onchange vai o valor em branco para o banco
 
-        const response = await DataProvider.put(pageAdress, { id: contaToEdit.id, valor: newValor, descricao: newDescricao, data: newData })
+        const response = await DataProvider.put(pageAdress, { id: bancoToEdit.id, valor: newValor, nome: newNome })
         console.log(response)
         if (response.status === 200) {
 
@@ -47,7 +46,7 @@ function MyVerticallyCenteredModal(props) {
 
 
     }
-    if (!contaToEdit) {
+    if (!bancoToEdit) {
         return null
     }
 
@@ -63,22 +62,18 @@ function MyVerticallyCenteredModal(props) {
                 <Modal.Title id="labeHeader">Cadastro de conta</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={salvaConta}>
+                <Form onSubmit={salvaBanco}>
                     <Form.Row>
                         <Form.Group as={Col}>
                             <Form.Label id="labe">Descrição</Form.Label>
-                            <Form.Control type="text" placeholder={contaToEdit.descricao} onChange={(event) => setNewDescricao(event.target.value)} value={newDescricao} />
+                            <Form.Control type="text" placeholder={bancoToEdit.nome} onChange={(event) => setNewNome(event.target.value)} value={newNome} />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
-                        <Form.Group as={Col}>
-                            <Form.Label id="labe">Data</Form.Label>
-                            <Form.Control type="date" onChange={(event) => setNewData(event.target.value)} value={newData} />
-                        </Form.Group>
                         <Form.Row>
                             <Form.Group as={Col}>
                                 <Form.Label id="labe">Valor</Form.Label>
-                                <Form.Control placeholder={contaToEdit.valor} type="number" onChange={(event) => setNewValor(event.target.value)} value={newValor} />
+                                <Form.Control placeholder={bancoToEdit.valor} type="number" onChange={(event) => setNewValor(event.target.value)} value={newValor} />
                             </Form.Group>
                         </Form.Row>
                     </Form.Row>
@@ -103,7 +98,7 @@ function EditContas(props) {
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                conta={props}
+                banco={props}
             />
 
 

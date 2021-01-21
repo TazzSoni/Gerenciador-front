@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import Contas from './pages/Contas/Contas';
-import Teste from './pages/Teste';
+import Banco from './pages/Bancos/Bancos';
 import Receitas from './pages/Receitas/Receitas';
 import Login from './pages/Login/Login';
 import Cadastrar from './pages/Cadastrar/Cadastrar';
@@ -28,8 +28,8 @@ function Routes() {
                 <Route path='/' exact component={Login} />
                 <PrivateRoute path='/home' exact component={Home} />
                 <PrivateRoute path='/home/contas' component={Contas} />
-                <PrivateRoute path='/home/cadastrar' component={Cadastrar} />
-                <PrivateRoute path='/home/teste' component={Teste} />
+                <Route path='/cadastrar' component={Cadastrar} />
+                <PrivateRoute path='/home/bancos' component={Banco} />
                 <PrivateRoute path='/home/receitas' component={Receitas} />
             </Switch>
         </Router>

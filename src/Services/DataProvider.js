@@ -32,11 +32,34 @@ async function get(endpoint) {
     try {
         const token = localStorage.getItem('app-token')
         const response = await axios.get(`${remoteServerAddress}${endpoint}`, { headers: { "Authorization": `${token}` } });
+
         return response;
     } catch (error) {
         return false;
     }
 }
+
+async function cadastra(data) {
+    const token = localStorage.getItem('app-token')
+    console.log(data)
+    const response = await axios
+        .post(`${remoteServerAddress}/pessoa`,
+            data,
+            {
+                headers: {
+                    "Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb2QiLCJleHAiOjE2MTIxMDIyMzJ9.sY29dYtTJFTrasgKcEbj8FA_N1GbIKVVZt7z17rL_zLX-2wT1PrBZJoMpqgAoGY9THGa57B9HSGW8Vcsnet_pQ"
+                },
+            })
+        .catch(er => {
+            console.log(er.response)
+            const newResponse = { status: er.response.status, message: "bad request" }
+            return newResponse
+
+        });
+    console.log(response)
+    return response;
+}
+
 async function post(endpoint, data) {
     const token = localStorage.getItem('app-token')
     console.log(data)
@@ -45,6 +68,7 @@ async function post(endpoint, data) {
             data,
             { headers: { "Authorization": `${token}` } })
         .catch(er => {
+            console.log(er.response)
             const newResponse = { status: er.response.status, message: "bad request" }
             return newResponse
 
@@ -55,7 +79,8 @@ async function post(endpoint, data) {
 
 async function put(endpoint, data) {
     const token = localStorage.getItem('app-token')
-    console.log(data)
+    console.log(remoteServerAddress, endpoint,
+        data)
     const response = await axios
         .put(`${remoteServerAddress}${endpoint}`,
             data,
@@ -97,7 +122,8 @@ const saida = {
     get,
     post,
     put,
-    excluir
+    excluir,
+    cadastra
 
 }
 

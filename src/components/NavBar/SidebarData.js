@@ -17,15 +17,15 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Receitas',
-    path: '/home/receitas',
-    icon: <FaIcons.FaCartPlus />,
+    title: 'Bancos',
+    path: '/home/bancos',
+    icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
-    title: 'Teste',
-    path: '/home/teste',
-    icon: <IoIcons.IoMdPeople />,
+    title: 'Receitas',
+    path: '/home/receitas',
+    icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {

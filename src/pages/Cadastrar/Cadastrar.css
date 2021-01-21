@@ -9,17 +9,24 @@
 }
 
 .cardCadastrar{
+    background-color: white;
     border-radius: 50px;
     width: 30rem;
     margin-bottom: 3px;
 
 }
+.card-body{
+    padding: 1px;
+}
 
-.btCadastrar{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#btCancelar{
+    margin-right: 150px;
+}
+#btCadastrar{
+    position: absolute;
+    right: 7%;
 }
 .img{
+    margin-bottom: 10px;
 border-radius: 50px;
 }
