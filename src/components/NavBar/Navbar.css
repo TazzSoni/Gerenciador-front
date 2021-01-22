@@ -1,9 +1,8 @@
 
 .navbar {
   background-color: #17A5B8;
-  height: 80px;
+  height: 55px;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 .headerApp{
