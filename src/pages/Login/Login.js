@@ -36,7 +36,7 @@ function Login() {
         <div className="mainLogin">
             <div className="divCardLogin">
                 <Card className="cardLogin" bg='#00C1AF'>
-                    <Card.Img className="img" variant="top" src={BgLogin} />
+                    <Card.Img className="imgLogin" variant="top" src={BgLogin} />
                     <Card.Body>
                         <Form onSubmit={routeHome}>
                             <Form.Group >
@@ -49,7 +49,7 @@ function Login() {
                                 <Form.Control onChange={event => setPassword(event.target.value)}
                                     name="senha" value={password} type="password" placeholder="Informe a senha..." />
                             </Form.Group>
-                            <Button className="btCadastrar" variant="link" type="link" onClick={routeCadastrar}>
+                            <Button className="btCadastrarLogin" variant="link" type="link" onClick={routeCadastrar}>
                                 Cadastrar
   </Button>
                             <Button className="btGo" variant="info" border="light" onClick={onEnterButtonClick}>

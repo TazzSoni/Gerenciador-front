@@ -14,14 +14,14 @@
     margin-bottom: 3px;
 
 }
-.btCadastrar{
+.btCadastrarLogin{
     margin-right: 150px;
 }
 .btGo{
     position: absolute;
     right: 7%;
 }
-.img{
+.imgLogin{
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
