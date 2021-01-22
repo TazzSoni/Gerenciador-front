@@ -10,7 +10,6 @@
 
 .cardLogin{
     background-color: white;
-    border-radius: 50px;
     width: 30rem;
     margin-bottom: 3px;
 
@@ -21,4 +20,8 @@
 .btGo{
     position: absolute;
     right: 7%;
+}
+.img{
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
