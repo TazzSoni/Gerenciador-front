@@ -29,7 +29,7 @@ function CardsMid() {
         <Card style={style.cardMid} border="info" text="info">
             <Card.Body>
                 <Card.Title >Gastos no mês</Card.Title>
-                <PieChart width={800} height={400} >
+                <PieChart width={590} height={400} >
                     <Pie
                         data={data}
                         cx={200}
