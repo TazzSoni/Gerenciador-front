@@ -28,6 +28,7 @@ function Navbar({ nome }) {
       marginLeft: '2rem',
       fontSize: '2rem',
       background: 'none',
+      marginTop: '1px'
     },
     navMenu: {
       zIndex: 1,
@@ -55,7 +56,11 @@ function Navbar({ nome }) {
       display: 'flex',
       justifyContent: 'flex-start',
       alignItems: 'center',
-    }
+    },
+    '&:hover': {
+      backgroundColor: '#1493a7',
+    },
+
   }
 
   return (
