@@ -3,7 +3,6 @@ import { Card } from 'react-bootstrap'
 import {
     PieChart, Pie, Cell, Label
 } from 'recharts';
-import './CardsMid.css'
 
 
 function CardsMid() {

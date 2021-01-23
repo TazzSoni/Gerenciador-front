@@ -1,19 +1,5 @@
 
-.navbar {
-  background-color: #17A5B8;
-  height: 55px;
-  display: flex;
-  align-items: center;
-}
-.headerApp{
-  font-family: 'Lato', sans-serif;
-  color: white;
-}
-.menu-bars {
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
-}
+
 
 .nav-menu {
   z-index: 1;
@@ -58,18 +44,8 @@
   background-color: #1493a7;
 }
 
-.nav-menu-items {
-  width: 100%;
-}
 
-.navbar-toggle {
-  background-color: #17A2B8;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
+
 
 span {
   margin-left: 16px;
