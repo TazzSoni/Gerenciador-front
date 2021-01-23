@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
-import { Container, Button, Col, Image, Navbar, Row } from 'react-bootstrap'
-import BgLogin from '../../images/BgLogin.jpg'
-import NovoBackground from '../../images/NovoBackground.jpg'
+import React from 'react'
+import { Button, Image, Navbar } from 'react-bootstrap'
 import Monitor from '../../images/Monitor.png'
-import ico from '../../images/ico.png'
 import { useHistory } from 'react-router-dom'
-import DataProvider from '../../Services/DataProvider'
 import { GiMoneyStack } from "react-icons/gi";
 
 
