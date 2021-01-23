@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import DataProvider from '../../Services/DataProvider'
-import "./Styles"
+import styles from "./Styles"
 import CrudContas from '../../components/ModalContas/CrudContas/Index';
 import { GiPayMoney } from "react-icons/gi";
 import EditContas from '../../components/ModalContas/EditContas/Index';
@@ -75,7 +75,7 @@ function Contas() {
   return (
     <>
       <Navbar nome={localStorage.getItem('user-name')} />
-      <Container fluid="sm" Style={styles.cont}>
+      <Container fluid="sm" style={styles.cont}>
         <Row>
           <Col style={styles.titulo}>
             <label style={styles.label}>Contas</label>
@@ -85,8 +85,8 @@ function Contas() {
           <Col ></Col>
           <Col >
             <Button variant="outline-info" style={styles.bt} onClick={callDeleteConta}>Excluir</Button>
-            <EditContas conta={contas}></EditContas>
-            <CrudContas ></CrudContas>
+            <EditContas conta={contas} style={styles.bt}></EditContas>
+            <CrudContas style={styles.bt}></CrudContas>
           </Col>
         </Row>
         <Row>

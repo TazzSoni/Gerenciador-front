@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import DataProvider from '../../Services/DataProvider'
-import "./Styles"
-import CrudBancos from '../../components/ModalBancos/CrudBancos/CrudBancos';
+import CrudBancos from '../../components/ModalBancos/CrudBancos/Index';
 import { GiPayMoney } from "react-icons/gi";
-import EditBancos from '../../components/ModalBancos/EditBancos/EditBancos';
+import EditBancos from '../../components/ModalBancos/EditBancos/Index';
 import styles from './Styles';
 
 function Banco() {
@@ -85,8 +84,8 @@ function Banco() {
                     <Col ></Col>
                     <Col >
                         <Button variant="outline-info" style={styles.bt} onClick={callDeleteBanco}>Excluir</Button>
-                        <EditBancos banco={bancos}></EditBancos>
-                        <CrudBancos ></CrudBancos>
+                        <EditBancos banco={bancos} style={styles.bt}></EditBancos>
+                        <CrudBancos style={styles.bt}></CrudBancos>
                     </Col>
                 </Row>
                 <Row>

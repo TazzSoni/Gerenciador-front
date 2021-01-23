@@ -11,7 +11,6 @@ function MyVerticallyCenteredModal(props) {
     async function salvaConta() {
         const pageAdress = "/conta/" + localStorage.getItem('login')
         const response = await DataProvider.post(pageAdress, { valor: newValor, descricao: newDescricao, data: newData })
-        console.log(response)
         if (response.status === 200) {
 
             alert("salvo")
@@ -79,12 +78,11 @@ function MyVerticallyCenteredModal(props) {
     );
 }
 
-function CrudContas() {
+function CrudContas(props) {
     const [modalShow, setModalShow] = React.useState(false);
-
     return (
         <>
-            <Button variant="success" id="bt1" onClick={() => setModalShow(true)}>Adicionar</Button>
+            <Button variant="success" id="bt1" style={props.style} onClick={() => setModalShow(true)}>Adicionar</Button>
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}

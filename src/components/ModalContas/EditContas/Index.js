@@ -36,7 +36,6 @@ function MyVerticallyCenteredModal(props) {
         //Caso não trigger o onchange vai o valor em branco para o banco
 
         const response = await DataProvider.put(pageAdress, { id: contaToEdit.id, valor: newValor, descricao: newDescricao, data: newData })
-        console.log(response)
         if (response.status === 200) {
 
             alert("salvo")
@@ -62,6 +61,9 @@ function MyVerticallyCenteredModal(props) {
         }
     }
 
+    if (!contaToEdit) {
+        return null
+    }
 
     return (
         <Modal
@@ -111,7 +113,7 @@ function EditContas(props) {
 
     return (
         <>
-            <Button variant="outline-info" id="bt1" onClick={() => setModalShow(true)}>Editar</Button>
+            <Button variant="outline-info" style={props.style} onClick={() => setModalShow(true)}>Editar</Button>
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
