@@ -7,6 +7,7 @@ import Receitas from './pages/Receitas/Receitas';
 import Login from './pages/Login';
 import Cadastrar from './pages/Cadastrar';
 import DataProvider from './Services/DataProvider'
+import BoasVindas from './pages/BoasVindas/Index';
 
 function Routes() {
 
@@ -25,7 +26,8 @@ function Routes() {
     return (
         <Router>
             <Switch>
-                <Route path='/' exact component={Login} />
+                <Route path='/' exact component={BoasVindas} />
+                <Route path='/login' exact component={Login} />
                 <PrivateRoute path='/home' exact component={Home} />
                 <PrivateRoute path='/home/contas' component={Contas} />
                 <Route path='/cadastrar' component={Cadastrar} />

@@ -39,12 +39,12 @@ function Login() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "#00C1AF"
+                backgroundImage: "linear-gradient(to right,  #17A2B8,#CCF3F8)"
             }}
         >
             <div>
                 <Card
-                    bg='#00C1AF'
+                    bg='#17A2B8'
                     style={{
                         backgroundColor: "white",
                         width: "30rem",
