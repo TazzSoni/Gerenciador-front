@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
 import BgLogin from '../../images/BgLogin.jpg'
 import { useHistory } from 'react-router-dom'
-import './Login.css'
 import DataProvider from '../../Services/DataProvider'
 
 
@@ -33,10 +32,33 @@ function Login() {
 
 
     return (
-        <div className="mainLogin">
-            <div className="divCardLogin">
-                <Card className="cardLogin" bg='#00C1AF'>
-                    <Card.Img className="imgLogin" variant="top" src={BgLogin} />
+        <div
+            style={{
+                height: "100vh",
+                minheight: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#00C1AF"
+            }}
+        >
+            <div>
+                <Card
+                    bg='#00C1AF'
+                    style={{
+                        backgroundColor: "white",
+                        width: "30rem",
+                        marginBottom: "3px"
+                    }}
+                >
+                    <Card.Img
+                        variant="top"
+                        src={BgLogin}
+                        style={{
+                            borderBottomLeftRadius: "25px",
+                            borderBottomRightRadius: "25px"
+                        }}
+                    />
                     <Card.Body>
                         <Form onSubmit={routeHome}>
                             <Form.Group >
@@ -49,10 +71,26 @@ function Login() {
                                 <Form.Control onChange={event => setPassword(event.target.value)}
                                     name="senha" value={password} type="password" placeholder="Informe a senha..." />
                             </Form.Group>
-                            <Button className="btCadastrarLogin" variant="link" type="link" onClick={routeCadastrar}>
+                            <Button
+                                variant="link"
+                                type="link"
+                                onClick={routeCadastrar}
+                                style={{
+                                    marginRight: "150px"
+                                }}
+                            >
                                 Cadastrar
   </Button>
-                            <Button className="btGo" variant="info" border="light" onClick={onEnterButtonClick}>
+                            <Button
+                                className="btGo"
+                                variant="info"
+                                border="light"
+                                onClick={onEnterButtonClick}
+                                style={{
+                                    position: "absolute",
+                                    right: "7%"
+                                }}
+                            >
                                 Go!!
   </Button>
                         </Form>

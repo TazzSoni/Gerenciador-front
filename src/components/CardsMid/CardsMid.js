@@ -17,8 +17,17 @@ function CardsMid() {
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
     const renderLabel = "R$ 1500,00"
 
+    const style = {
+        cardMid: {
+            margin: "0 1rem 1rem 0",
+            backgroundColor: "white",
+            width: "31rem",
+            height: "32rem"
+        }
+    }
+
     return (
-        <Card className="cardMid" border="info" text="info">
+        <Card style={style.cardMid} border="info" text="info">
             <Card.Body>
                 <Card.Title >Gastos no mês</Card.Title>
                 <PieChart width={800} height={400} >

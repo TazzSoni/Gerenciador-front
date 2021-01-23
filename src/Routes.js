@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import Home from './pages/Home';
+import Home from './pages/Home/index';
 import Contas from './pages/Contas/Contas';
 import Banco from './pages/Bancos/Bancos';
 import Receitas from './pages/Receitas/Receitas';
-import Login from './pages/Login/Login';
-import Cadastrar from './pages/Cadastrar/Cadastrar';
+import Login from './pages/Login';
+import Cadastrar from './pages/Cadastrar';
 import DataProvider from './Services/DataProvider'
 
 function Routes() {

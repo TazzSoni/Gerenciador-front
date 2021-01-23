@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Container } from 'react-bootstrap'
-import CardsTop from '../components/CardsTop/CardsTop'
-import CardsMid from '../components/CardsMid/CardsMid';
-import Navbar from '../components/NavBar/Navbar'
-import DataProvider from '../Services/DataProvider'
+import CardsTop from '../../components/CardsTop/CardsTop'
+import CardsMid from '../../components/CardsMid/CardsMid';
+import Navbar from '../../components/NavBar/Navbar'
+import DataProvider from '../../Services/DataProvider'
 
 
 function Home() {
@@ -28,8 +28,18 @@ function Home() {
   return (
     <>
       <Navbar nome={usuario.nome} />
-      <div className="home" >
-        <Container className="conatiner">
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }} >
+        <Container
+          style={{
+            display: "grid",
+            justifyContent: "center"
+          }}
+        >
           <Row>
             <CardsTop usuario={usuario}></CardsTop>
           </Row>
