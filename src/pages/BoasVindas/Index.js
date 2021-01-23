@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Image, Navbar } from 'react-bootstrap'
-import Monitor from '../../images/Monitor.png'
+import monitor from '../../images/monitor.png'
 import { useHistory } from 'react-router-dom'
 import { GiMoneyStack } from "react-icons/gi";
 
@@ -47,7 +47,7 @@ function BoasVindas() {
                     </Navbar.Collapse>
                 </Navbar>
 
-                <Image src={Monitor} style={{ position: "absolute", height: '50vh', width: '90vh', top: 220, right: 0 }} />
+                <Image src={monitor} style={{ position: "absolute", height: '50vh', width: '90vh', top: 220, right: 0 }} />
 
                 <h3 style={{ fontSize: "5rem", alignItems: "center", marginLeft: "5rem", padding: '5rem' }}>
                     Sistema
