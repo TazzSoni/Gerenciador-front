@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Form, Col, Button } from 'react-bootstrap';
-import './EditBancos.css'
-import DataProvider from '../../Services/DataProvider'
+import DataProvider from '../../../Services/DataProvider'
 
 
 function MyVerticallyCenteredModal(props) {
@@ -46,6 +45,22 @@ function MyVerticallyCenteredModal(props) {
 
 
     }
+
+    const styles = {
+        labe: {
+            fontSize: 20,
+            font: 'bold',
+            color: '#17A5B8',
+        },
+        labeHeader: {
+            fontSize: 30,
+            color: '#00a2b8',
+        },
+        btSummit: {
+            float: 'right',
+        }
+    }
+
     if (!bancoToEdit) {
         return null
     }
@@ -59,26 +74,26 @@ function MyVerticallyCenteredModal(props) {
 
         >
             <Modal.Header closeButton>
-                <Modal.Title id="labeHeader">Cadastro de conta</Modal.Title>
+                <Modal.Title style={styles.labeHeader}>Cadastro de conta</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={salvaBanco}>
                     <Form.Row>
                         <Form.Group as={Col}>
-                            <Form.Label id="labe">Descrição</Form.Label>
+                            <Form.Label style={styles.labe}>Descrição</Form.Label>
                             <Form.Control type="text" placeholder={bancoToEdit.nome} onChange={(event) => setNewNome(event.target.value)} value={newNome} />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>
                         <Form.Row>
                             <Form.Group as={Col}>
-                                <Form.Label id="labe">Valor</Form.Label>
+                                <Form.Label style={styles.labe}>Valor</Form.Label>
                                 <Form.Control placeholder={bancoToEdit.valor} type="number" onChange={(event) => setNewValor(event.target.value)} value={newValor} />
                             </Form.Group>
                         </Form.Row>
                     </Form.Row>
                     <hr></hr>
-                    <Button className="btSummit" variant="success" type="summit" onClick={props.onHide} >
+                    <Button style={styles.btSummit} variant="success" type="summit" onClick={props.onHide} >
                         Salvar Conta
             </Button>
                 </Form>

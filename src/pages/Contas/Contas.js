@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import DataProvider from '../../Services/DataProvider'
-import "./Contas.css"
-import CrudContas from '../../components/ModalContas/CrudContas';
+import "./Styles"
+import CrudContas from '../../components/ModalContas/CrudContas/Index';
 import { GiPayMoney } from "react-icons/gi";
-import EditContas from '../../components/ModalContas/EditContas';
+import EditContas from '../../components/ModalContas/EditContas/Index';
 
 function Contas() {
   const [contas, setContas] = useState(null);
@@ -75,16 +75,16 @@ function Contas() {
   return (
     <>
       <Navbar nome={localStorage.getItem('user-name')} />
-      <Container fluid="sm" className="cont">
+      <Container fluid="sm" Style={styles.cont}>
         <Row>
-          <Col className="titulo">
-            <label id="label">Contas</label>
-            <GiPayMoney size={50} className="iconCard"></GiPayMoney>
+          <Col style={styles.titulo}>
+            <label style={styles.label}>Contas</label>
+            <GiPayMoney size={50} style={styles.iconCard}></GiPayMoney>
           </Col>
           <Col ></Col>
           <Col ></Col>
           <Col >
-            <Button variant="outline-info" id="bt3" onClick={callDeleteConta}>Excluir</Button>
+            <Button variant="outline-info" style={styles.bt} onClick={callDeleteConta}>Excluir</Button>
             <EditContas conta={contas}></EditContas>
             <CrudContas ></CrudContas>
           </Col>

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import DataProvider from '../../Services/DataProvider'
-import "./Bancos.css"
-import CrudBancos from '../../components/ModalBancos/CrudBancos';
+import "./Styles"
+import CrudBancos from '../../components/ModalBancos/CrudBancos/CrudBancos';
 import { GiPayMoney } from "react-icons/gi";
-import EditBancos from '../../components/ModalBancos/EditBancos';
+import EditBancos from '../../components/ModalBancos/EditBancos/EditBancos';
+import styles from './Styles';
 
 function Banco() {
     const [bancos, setBancos] = useState(null);
@@ -74,16 +75,16 @@ function Banco() {
     return (
         <>
             <Navbar nome={localStorage.getItem('user-name')} />
-            <Container fluid="sm" className="cont">
+            <Container fluid="sm" style={styles.cont}>
                 <Row>
-                    <Col className="titulo">
-                        <label id="label">Bancos</label>
-                        <GiPayMoney size={50} className="iconCard"></GiPayMoney>
+                    <Col style={styles.titulo}>
+                        <label style={styles.label}>Bancos</label>
+                        <GiPayMoney size={50} style={styles.iconCard}></GiPayMoney>
                     </Col>
                     <Col ></Col>
                     <Col ></Col>
                     <Col >
-                        <Button variant="outline-info" id="bt3" onClick={callDeleteBanco}>Excluir</Button>
+                        <Button variant="outline-info" style={styles.bt} onClick={callDeleteBanco}>Excluir</Button>
                         <EditBancos banco={bancos}></EditBancos>
                         <CrudBancos ></CrudBancos>
                     </Col>
@@ -93,9 +94,9 @@ function Banco() {
                         <Table striped bordered hover variant="info">
                             <thead>
                                 <tr>
-                                    <th className="check"><Form.Check disabled type="checkbox" /></th>
+                                    <th style={styles.check}><Form.Check disabled type="checkbox" /></th>
                                     <th>Nome</th>
-                                    <th className="saldo">Saldo</th>
+                                    <th style={styles.saldo}>Saldo</th>
                                 </tr>
                             </thead>
                             <tbody>
