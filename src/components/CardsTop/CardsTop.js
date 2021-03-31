@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card } from 'react-bootstrap'
 import { GiTakeMyMoney, GiReceiveMoney, GiPayMoney } from "react-icons/gi";
-import { AiFillCreditCard } from "react-icons/ai";
 
 
 function CardsTop({ usuario }) {
