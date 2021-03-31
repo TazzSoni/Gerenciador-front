@@ -11,7 +11,7 @@ function MyVerticallyCenteredModal(props) {
 
     useEffect(() => {
         function getReceitas() {
-            setTeste(props.banco.banco)
+            setTeste(props.receita.receita)
         }
         function editReceita(item) {
             if (item.select) {
@@ -31,8 +31,8 @@ function MyVerticallyCenteredModal(props) {
 
 
     async function salvaBanco() {
-        const pageAdress = "/banco/" + localStorage.getItem('login')
-        //Caso não trigger o onchange vai o valor em branco para o banco
+        const pageAdress = "/receita/" + localStorage.getItem('login')
+        //Caso não trigger o onchange vai o valor em branco para o receita
 
         const response = await DataProvider.put(pageAdress, { id: receitaToEdit.id, valor: newValor, origem: newOrigem })
         if (response.status === 200) {
@@ -79,8 +79,8 @@ function MyVerticallyCenteredModal(props) {
                 <Form onSubmit={salvaBanco}>
                     <Form.Row>
                         <Form.Group as={Col}>
-                            <Form.Label style={styles.labe}>Nome</Form.Label>
-                            <Form.Control type="text" placeholder={receitaToEdit.nome} onChange={(event) => setNewOrigem(event.target.value)} value={newOrigem} />
+                            <Form.Label style={styles.labe}>Origem</Form.Label>
+                            <Form.Control type="text" placeholder={receitaToEdit.origem} onChange={(event) => setNewOrigem(event.target.value)} value={newOrigem} />
                         </Form.Group>
                     </Form.Row>
                     <Form.Row>

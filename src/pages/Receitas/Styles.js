@@ -25,15 +25,8 @@ const styles = {
     },
     iconCard: {
         color: 'white',
-        marginLeft: '29%',
-        justifyContent: 'right',
-    },
-
-    check: {
-        width: '10%',
-    },
-    saldo: {
-        width: '20%',
+        justifyContent: "right",
+        float: "right"
     }
 }
 

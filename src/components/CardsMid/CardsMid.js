@@ -5,8 +5,7 @@ import {
 } from 'recharts';
 
 
-function CardsMid() {
-
+function CardsMid({ usuario, title }) {
     const data = [
         { name: 'Group A', value: 400 },
         { name: 'Group B', value: 300 },
@@ -14,7 +13,7 @@ function CardsMid() {
         { name: 'Group D', value: 200 },
     ]
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
-    const renderLabel = "R$ 1500,00"
+    const renderLabel = usuario
 
     const style = {
         cardMid: {
@@ -28,7 +27,7 @@ function CardsMid() {
     return (
         <Card style={style.cardMid} border="info" text="info">
             <Card.Body>
-                <Card.Title >Gastos no mês</Card.Title>
+                <Card.Title >{title}</Card.Title>
                 <PieChart width={590} height={400} >
                     <Pie
                         data={data}

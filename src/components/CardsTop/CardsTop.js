@@ -16,7 +16,7 @@ function CardsTop({ usuario }) {
         },
         card: {
             margin: "1rem 1rem 1rem 0",
-            width: '15rem',
+            width: '20.3rem',
         },
         col: {
             width: "10%"
@@ -59,17 +59,7 @@ function CardsTop({ usuario }) {
                     <Card.Title style={styles.cardValor}>R$ {usuario.despesas}</Card.Title>
                 </Card.Body>
             </Card>
-            <Card bg='info' text='white' style={styles.card}>
-                <Card.Header>Cartão de Crédito
-                <AiFillCreditCard
-                        size={50}
-                        style={styles.icon}
-                    />
-                </Card.Header>
-                <Card.Body>
-                    <Card.Title style={styles.cardValor}>R$ 0</Card.Title>
-                </Card.Body>
-            </Card>
+
 
         </>
     );

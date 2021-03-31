@@ -17,13 +17,22 @@ function Cadastrar() {
     //    }
 
     async function onEnterButtonClick() {
-        const response = await DataProvider.cadastra({ nome: nome, login: login, senha: password })
-        if (response.status === 200) {
-            history.push('/')
+        if (password === confirmPassword) {
+            if (nome !== "") {
+                const response = await DataProvider.cadastra({ nome: nome, login: login, senha: password })
+                if (response.status === 200) {
+                    history.push('/')
+                } else {
+                    alert(response.message)
+                    //redirect("/login")
+                }
+            } else {
+                alert("Preencha o nome")
+            }
         } else {
-            alert(response.message)
-            //redirect("/login")
+            alert("Senhas não confere!!")
         }
+
     }
 
     const routeLogin = () => {
@@ -76,16 +85,7 @@ function Cadastrar() {
                                 <Form.Control onChange={event => setConfirmPassword(event.target.value)}
                                     name="senha" value={confirmPassword} type="password" placeholder="Confirme a senha..." />
                             </Form.Group>
-                            <Button
-                                style={{
-                                    marginRight: "150px"
-                                }}
-                                variant="link"
-                                type="link"
-                                onClick={routeLogin}
-                            >
-                                cancelar
-</Button>
+
                             <Button
                                 style={{
                                     position: "absolute",
@@ -96,6 +96,16 @@ function Cadastrar() {
                                 onClick={onEnterButtonClick}
                             >
                                 Cadastrar
+</Button>
+                            <Button
+                                style={{
+                                    marginRight: "150px"
+                                }}
+                                variant="link"
+                                type="link"
+                                onClick={routeLogin}
+                            >
+                                cancelar
 </Button>
                         </Form>
                     </Card.Body>

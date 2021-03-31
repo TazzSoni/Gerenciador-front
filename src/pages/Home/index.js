@@ -44,8 +44,8 @@ function Home() {
             <CardsTop usuario={usuario}></CardsTop>
           </Row>
           <Row>
-            <CardsMid></CardsMid>
-            <CardsMid></CardsMid>
+            <CardsMid usuario={usuario.despesas} title={"Gastos do Mês"}></CardsMid>
+            <CardsMid usuario={usuario.receita} title={"Receitas do Mês"}></CardsMid>
           </Row>
         </Container>
       </div>

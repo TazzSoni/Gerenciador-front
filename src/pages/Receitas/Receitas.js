@@ -1,28 +1,11 @@
-import React from 'react';
-import Navbar from '../../components/NavBar/Navbar'
-
-function Receitas() {
-    return (
-        <>
-            <Navbar />
-            <div className='receitas'>
-                <h1>Receitas</h1>
-            </div>
-        </>
-    );
-}
-
-export default Receitas;
-
-/*
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/NavBar/Navbar'
 import { Container, Row, Col, Button, Table, Form } from 'react-bootstrap'
 import DataProvider from '../../Services/DataProvider'
+import styles from "./Styles"
 import CrudReceitas from '../../components/ModalReceitas/CrudReceitas/Index';
-import { GiPayMoney } from "react-icons/gi";
-import EditReceitas from '../../components/ModalReceitas/EditReceitas/Index';
-import styles from './Styles';
+import { GiReceiveMoney } from "react-icons/gi";
+import EditContas from '../../components/ModalReceitas/EditReceitas/Index';
 
 function Receitas() {
     const [receitas, setReceitas] = useState(null);
@@ -33,7 +16,7 @@ function Receitas() {
             const newReceitas = await DataProvider.get("/receita/" + localStorage.getItem('login'))
             if (newReceitas) {
                 setReceitas(newReceitas.data.map((d) => {
-                    return { select: false, id: d.id, valor: d.valor, origem: d.nome }
+                    return { select: false, id: d.id, valor: d.valor, origem: d.origem }
                 }));
             }
         }
@@ -50,8 +33,8 @@ function Receitas() {
     async function deleteReceita(item) {
         if (item.select) {
             //implementar aqui a chamada no axios para exclusão
-            const newContas = await DataProvider.excluir("/receita/" + localStorage.getItem('login') + "/" + item.id)
-            if (newContas.status === 200) {
+            const newReceitas = await DataProvider.excluir("/receita/" + localStorage.getItem('login') + "/" + item.id)
+            if (newReceitas.status === 200) {
                 setEvento(item)
                 alert("excluido")
             } else {
@@ -62,7 +45,7 @@ function Receitas() {
 
 
 
-    function renderReceitas() {
+    function renderContas() {
         if (!receitas) {
             return null
         }
@@ -82,8 +65,8 @@ function Receitas() {
                     }}
                     type="checkbox"
                     checked={receita.select} /></td>
-                <td>{receita.nome}</td>
-                <td>R$ {receita.valor}</td>
+                <td>{receita.origem}</td>
+                <td>{receita.valor}</td>
             </tr>
         )
     }
@@ -95,13 +78,13 @@ function Receitas() {
                 <Row>
                     <Col style={styles.titulo}>
                         <label style={styles.label}>Receitas</label>
-                        <GiPayMoney size={50} style={styles.iconCard}></GiPayMoney>
+                        <GiReceiveMoney size={50} style={styles.iconCard}></GiReceiveMoney>
                     </Col>
                     <Col ></Col>
                     <Col ></Col>
                     <Col >
                         <Button variant="outline-info" style={styles.bt} onClick={callDeleteReceita}>Excluir</Button>
-                        <EditReceitas receita={receitas} style={styles.bt}></EditReceitas>
+                        <EditContas receita={receitas} style={styles.bt}></EditContas>
                         <CrudReceitas style={styles.bt}></CrudReceitas>
                     </Col>
                 </Row>
@@ -110,13 +93,13 @@ function Receitas() {
                         <Table striped bordered hover variant="info">
                             <thead>
                                 <tr>
-                                    <th style={styles.check}><Form.Check disabled type="checkbox" /></th>
+                                    <th><Form.Check disabled type="checkbox" /></th>
                                     <th>Origem</th>
-                                    <th style={styles.saldo}>Saldo</th>
+                                    <th>Valor</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {renderReceitas()}
+                                {renderContas()}
 
                             </tbody>
                         </Table>
@@ -128,5 +111,3 @@ function Receitas() {
 }
 
 export default Receitas;
-
-*/
