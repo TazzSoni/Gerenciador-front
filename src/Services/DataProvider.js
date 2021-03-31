@@ -1,8 +1,8 @@
 const { create } = require("axios").default;
-//const remoteServerAddressLogin = "https://apirest-gerenciador.herokuapp.com/login";
-//const remoteServerAddress = "https://apirest-gerenciador.herokuapp.com/api";
-const remoteServerAddressLogin = "http://localhost:8080/login";
-const remoteServerAddress = "http://localhost:8080/api";
+const remoteServerAddressLogin = "https://apirest-gerenciador.herokuapp.com/login";
+const remoteServerAddress = "https://apirest-gerenciador.herokuapp.com/api";
+//const remoteServerAddressLogin = "http://localhost:8080/login";
+//const remoteServerAddress = "http://localhost:8080/api";
 
 
 const axios = create({
