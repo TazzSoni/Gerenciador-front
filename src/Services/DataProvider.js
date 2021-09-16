@@ -1,8 +1,8 @@
 const { create } = require("axios").default;
-const remoteServerAddressLogin = "https://apirest-gerenciador.herokuapp.com/login";
-const remoteServerAddress = "https://apirest-gerenciador.herokuapp.com/api";
-//const remoteServerAddressLogin = "http://localhost:8080/login";
-//const remoteServerAddress = "http://localhost:8080/api";
+// const remoteServerAddressLogin = "https://apirest-gerenciador.herokuapp.com/login";
+// const remoteServerAddress = "https://apirest-gerenciador.herokuapp.com/api";
+const remoteServerAddressLogin = "http://localhost:8080/login";
+const remoteServerAddress = "http://localhost:8080/api";
 
 
 const axios = create({
@@ -42,27 +42,14 @@ async function get(endpoint) {
 }
 
 async function cadastra(data) {
-    login({
-        "username": "admin",
-        "password": "password"
-    })
-    const bearer = {
-        "Authorization": localStorage.getItem("app-token")
-    }
-    console.log(bearer)
-    const response = await axios
-        .post(`${remoteServerAddress}/pessoa`,
-            data,
-            {
-                headers: bearer,
-            })
-        .catch(er => {
-            console.log(er.response)
-            const newResponse = { status: er.response.status, message: "bad request" }
-            return newResponse
 
-        });
-    return response;
+    const headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+    const url = `${remoteServerAddress}/pessoa`
+    const response = await fetch(url, { headers, method: "post", body: JSON.stringify(data) })
+    return response.status
 }
 
 async function post(endpoint, data) {

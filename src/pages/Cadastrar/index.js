@@ -20,10 +20,11 @@ function Cadastrar() {
         if (password === confirmPassword) {
             if (nome !== "") {
                 const response = await DataProvider.cadastra({ nome: nome, login: login, senha: password })
-                if (response.status === 200) {
+                if (response === 200) {
+                    alert("Cadastrado com Sucesso")
                     history.push('/')
                 } else {
-                    alert(response.message)
+                    alert(response)
                     //redirect("/login")
                 }
             } else {
@@ -96,7 +97,7 @@ function Cadastrar() {
                                 onClick={onEnterButtonClick}
                             >
                                 Cadastrar
-</Button>
+                            </Button>
                             <Button
                                 style={{
                                     marginRight: "150px"
@@ -106,7 +107,7 @@ function Cadastrar() {
                                 onClick={routeLogin}
                             >
                                 cancelar
-</Button>
+                            </Button>
                         </Form>
                     </Card.Body>
                 </Card>
