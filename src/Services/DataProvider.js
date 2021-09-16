@@ -42,7 +42,6 @@ async function get(endpoint) {
 }
 
 async function cadastra(data) {
-
     const headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
