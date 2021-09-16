@@ -49,22 +49,24 @@ function BoasVindas() {
 
                 <Image src={monitor} style={{ position: "absolute", height: '50vh', width: '90vh', top: 220, right: 0 }} />
 
-                <h3 style={{ fontSize: "5rem", alignItems: "center", marginLeft: "5rem", padding: '5rem' }}>
-                    Sistema
-                    <h3>para Controle financeiro </h3>
-                    <h3>inteiramente online</h3>
-                    <h4>simples e gratuito</h4>
-                    <label style={{ fontSize: "1rem", marginRight: "5%" }}>Ainda não é cadastrado?</label>
+                <div style={{ marginLeft: "5rem" }}>
+
+                    <h3 style={{ fontSize: "5rem", alignItems: "center", marginLeft: "5rem" }}>
+                        Sistema
+                    </h3>
+                    <h3 style={{ marginLeft: "5rem" }}>para Controle financeiro </h3>
+                    <h3 style={{ marginLeft: "5rem" }}>inteiramente online</h3>
+                    <h4 style={{ marginLeft: "5rem" }}>simples e gratuito</h4>
+                    <label style={{ fontSize: "1rem", marginRight: "5%", marginLeft: "5rem" }}>Ainda não é cadastrado?</label>
                     <br></br>
                     <Button
-                        style={{ borderRadius: "2rem", marginRight: "10%", width: 150, alignItems: "center", justifyContent: "center" }}
+                        style={{ borderRadius: "2rem", marginLeft: "5rem", marginRight: "10%", width: 150, alignItems: "center", justifyContent: "center" }}
                         variant="outline-light"
                         onClick={routeCadastrar}
                     >
                         <label style={{ fontSize: "1rem", marginTop: "7px" }}>cadastre-se</label>
                     </Button>
-
-                </h3>
+                </div>
 
 
             </div>
